@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router'
 import useSWR from 'swr'
 
 const fetcher = async (...args) => {
@@ -6,10 +5,8 @@ const fetcher = async (...args) => {
     return res.json()
 }
 
-function AlbumContents() {
-    const router = useRouter()
-    const { name } = router.query
-    const { data } = useSWR(`/api/album/${name}`, fetcher)
+function AlbumsList() {
+    const { data } = useSWR(`/api/album`, fetcher)
 
     if (!data) {
         return 'Loading...'
@@ -24,7 +21,8 @@ function AlbumContents() {
                             <thead class="bg-gray-50">
                                 <tr>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        File name
+                                        Album name
+                                        {console.log(data)}
                                     </th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         File url
@@ -35,7 +33,7 @@ function AlbumContents() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {data.map(image => (
+                                {/* {data.map(image => (
                                     <tr class="bg-white hover:bg-gray-50">
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                             {image.fileName}
@@ -47,7 +45,7 @@ function AlbumContents() {
                                             <a href={image.fileUrl} class="text-indigo-600 hover:text-indigo-900">View</a>
                                         </td>
                                     </tr>
-                                ))}
+                                ))} */}
                             </tbody>
                         </table>
                     </div>
@@ -57,4 +55,4 @@ function AlbumContents() {
     )
 }
 
-export default AlbumContents
+export default AlbumsList
