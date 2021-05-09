@@ -22,7 +22,6 @@ function AlbumsList() {
                                 <tr>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Album name
-                                        {console.log(data)}
                                     </th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         File url
@@ -33,19 +32,21 @@ function AlbumsList() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {/* {data.map(image => (
+                                {/* {data.map(album => (
                                     <tr class="bg-white hover:bg-gray-50">
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                            {image.fileName}
+                                            {album.folderName}
+                                            {console.log(album)}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {image.fileUrl}
+                                            {"hi"}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <a href={image.fileUrl} class="text-indigo-600 hover:text-indigo-900">View</a>
+                                            <a href={"hi"} class="text-indigo-600 hover:text-indigo-900">View</a>
                                         </td>
                                     </tr>
                                 ))} */}
+                                {console.log(data)}
                             </tbody>
                         </table>
                     </div>

@@ -2,16 +2,11 @@ import { firestore } from '../../../lib/firebase.js';
 
 export default (req, res) => {
     firestore
-    .collection('folders')
+    .collection('albums')
     .doc(req.query.name)
-    .collection('files')
     .get()
-    .then((querySnapshot) => {
-        const images = []
-        querySnapshot.forEach((doc) =>
-            images.push(doc.data())
-        )
-        res.json(images)
+    .then((documentSnapshot) => {
+        res.json(documentSnapshot.data())
     })
     .catch((error) => {
         res.json({ error })

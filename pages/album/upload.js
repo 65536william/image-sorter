@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form'
 import { storage } from '../../lib/firebase.js'
 import { firestore } from '../../lib/firebase.js'
+import firebase from '../../lib/firebase.js'
 
 export default function UploadImages() {
 
@@ -16,13 +17,11 @@ export default function UploadImages() {
             let ref = storage.ref(`${folderName}/${anonymisedImage.name}`)
             return ref.put(anonymisedImage)
             .then(() => ref.getDownloadURL()
-            .then((url) => firestore.collection('folders').doc(folderName).collection('files').doc(anonymisedImage.name).set({
-                fileName: anonymisedImage.name,
-                fileUrl: url
-            }))
-            .then(() => firestore.collection('folders').doc(folderName).set({
-                folderName: folderName,
-            }))
+            .then((downloadUrl) => firestore.collection('albums').doc(folderName).set({
+                [anonymisedImage.name]: {
+                    url: downloadUrl
+                }
+            }, { merge: true }))
         )})
         Promise.all(promises)
         .then(() => console.log("All images uploaded to Cloud Storage")).catch((err) => console.log(err))

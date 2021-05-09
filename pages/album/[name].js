@@ -35,7 +35,7 @@ function AlbumContents() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {data.map(image => (
+                                {/* {data.map(image => (
                                     <tr class="bg-white hover:bg-gray-50">
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                                             {image.fileName}
@@ -47,7 +47,7 @@ function AlbumContents() {
                                             <a href={image.fileUrl} class="text-indigo-600 hover:text-indigo-900">View</a>
                                         </td>
                                     </tr>
-                                ))}
+                                ))} */}
                             </tbody>
                         </table>
                     </div>
