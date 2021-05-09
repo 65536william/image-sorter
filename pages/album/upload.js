@@ -16,13 +16,18 @@ export default function UploadImages() {
             let anonymisedImage = new File([image], generateRandomId(), {type: image.type})
             let ref = storage.ref(`${folderName}/${anonymisedImage.name}`)
             return ref.put(anonymisedImage)
-            .then(() => ref.getDownloadURL()
+            .then(() => ref.getDownloadURL())
             .then((downloadUrl) => firestore.collection('albums').doc(folderName).set({
                 [anonymisedImage.name]: {
                     url: downloadUrl
                 }
             }, { merge: true }))
-        )})
+            .then(() => firestore.collection('meta').doc('albums').set({
+                [folderName]: {
+                    count: firebase.firestore.FieldValue.increment(1)
+                }
+            }, { merge: true }))
+        })
         Promise.all(promises)
         .then(() => console.log("All images uploaded to Cloud Storage")).catch((err) => console.log(err))
     }
