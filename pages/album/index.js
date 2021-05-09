@@ -24,29 +24,27 @@ function AlbumsList() {
                                         Album name
                                     </th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        File url
+                                        Album count
                                     </th>
                                     <th scope="col" class="relative px-6 py-3">
-                                        <span class="sr-only">View</span>
+                                        <span class="sr-only">Open</span>
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {/* {data.map(album => (
+                                {Object.entries(data).map(([key, value]) => (
                                     <tr class="bg-white hover:bg-gray-50">
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                            {album.folderName}
-                                            {console.log(album)}
+                                            {key}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {"hi"}
+                                            {value.count}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <a href={"hi"} class="text-indigo-600 hover:text-indigo-900">View</a>
+                                            <a href={`/album/${key}`} class="text-indigo-600 hover:text-indigo-900">View</a>
                                         </td>
                                     </tr>
-                                ))} */}
-                                {console.log(data)}
+                                ))}
                             </tbody>
                         </table>
                     </div>

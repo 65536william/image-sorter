@@ -24,10 +24,10 @@ function AlbumContents() {
                             <thead class="bg-gray-50">
                                 <tr>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        File name
+                                        Image name
                                     </th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        File url
+                                        Image url
                                     </th>
                                     <th scope="col" class="relative px-6 py-3">
                                         <span class="sr-only">View</span>
@@ -35,19 +35,19 @@ function AlbumContents() {
                                 </tr>
                             </thead>
                             <tbody>
-                                {/* {data.map(image => (
+                                {Object.entries(data).map(([key, value]) => (
                                     <tr class="bg-white hover:bg-gray-50">
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                            {image.fileName}
+                                            {key}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            {image.fileUrl}
+                                            {value.url}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                            <a href={image.fileUrl} class="text-indigo-600 hover:text-indigo-900">View</a>
+                                            <a href={value.url} class="text-indigo-600 hover:text-indigo-900">View</a>
                                         </td>
                                     </tr>
-                                ))} */}
+                                ))}
                             </tbody>
                         </table>
                     </div>
